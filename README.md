@@ -1,4 +1,7 @@
 golang webservice to store and retrieve messages.
+
+# Approach and Design Decisions
+The main.go file is the initialization point. The endpoints are denoted here and the environment directory contains the calculation and storage operations. I find go to be a light-weight and dependable language to use, with robust error handling. I chose mongodb as the database for its availablity in a community edition form and ease of installation, as well capabilities sharding capabilities should we move this project towards production.
 # Requirements
 MongoDB 2.6+
 Golang 1.10+
@@ -64,3 +67,6 @@ docker rm $(docker ps -a -f status=exited -q)
 ```
 # Important
 If database configuration is not set, the service will default to in-memory mode. This is not advisable in a distributed environment across multiple hosts, there will be no guarantee of correct behavior and data will be unrecoverable after the process is terminated.
+
+#Scaling and Other Future Considerations
+Eventually the system will move towards SSL encryption of requests and responses due to the nature of the service. This will add additional overhead/latency. We would have to take a critical look at go implementation in docker environment and assess the validaty of moving forward with this language or docker as an environment. We should look towards distribution of the data and duplicate datasets. In the same line of thinking, we should assess the possibility of bucketing users and or hashing by key and sharding across databases to speed up database access. Depending on the userbase, we should look to availability across regions. Depending on traffic size, we may need to front-end the service with gatekeeping mechanisms, perhaps by number of queries per IP. In addition, we may refactor the service to front-end requests and separate hosts/containers to perform calculations. In addition, we should look to implement logging to a common logger (instead of main out) which is reaped by a central process to aggregate metrics.
