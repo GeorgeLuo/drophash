@@ -1,0 +1,7 @@
+{
+	"database_path" : "mongodb://host.docker.internal:27017",
+	"service_port" : 8080,
+	"collection_name" : "data",
+	"database_name" : "hash-to-messages",
+	"local_mem_mode" : 0
+}
