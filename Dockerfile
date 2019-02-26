@@ -6,8 +6,8 @@ ADD . /go/src/github.com/GeorgeLuo/drophash
 RUN go get github.com/labstack/echo
 RUN go get github.com/dgrijalva/jwt-go
 RUN go get github.com/sirupsen/logrus
-RUN go get github.com/mongodb/mongo-go-driver/mongo/options
-RUN go get github.com/mongodb/mongo-go-driver/mongo
+RUN go get go.mongodb.org/mongo-driver/mongo/options
+RUN go get go.mongodb.org/mongo-driver/mongo
 RUN go get github.com/labstack/echo/middleware
 RUN go get gopkg.in/mgo.v2/bson
 

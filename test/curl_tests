@@ -1,0 +1,54 @@
+http=http://localhost:6060/messages
+expected='{"digest":"2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"}'
+if (curl -sSf  -X POST   $http   -H 'Content-Type: application/json'   -d '{"message":"foo"}' -w "%{http_code}\n" | grep "$expected" -A 1 | grep 200)
+then
+	echo "basic POST messages succeeded"
+else
+	echo "basic POST messages failed"
+fi
+
+http=http://localhost:6060/messages/2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+expected='{"message":"foo"}'
+if (curl -s $http -w "%{http_code}\n" | grep "$expected" -A 1 | grep 200)
+then
+	echo "basic GET messages succeeded"
+else
+	echo "basic GET messages failed"
+fi
+
+http=http://localhost:6060/messages/notKey
+expected='{"err_msg":"Message not found"}'
+if (curl -s $http -w "%{http_code}\n" | grep "$expected" -A 1 | grep 404)
+then
+	echo "basic GET messages not found succeeded"
+else
+	echo "basic GET messages not found failed"
+fi
+
+http=http://localhost:6060/messages
+expected='{"digest":"821a8de6ff88501123b99cacf7eec178638c77362012f73945f21b624cd105f8"}'
+if (curl -sSf  -X POST   $http   -H 'Content-Type: application/json'   -d '{"message":"new message"}' -w "%{http_code}\n" | grep "$expected" -A 1 | grep 200)
+then
+	echo "basic POST new to messages succeeded"
+else
+	echo "basic POST new to messages failed"
+fi
+
+http=http://localhost:6060/messages/821a8de6ff88501123b99cacf7eec178638c77362012f73945f21b624cd105f8
+expected='{"message":"new message"}'
+if (curl -s $http -w "%{http_code}" | grep "$expected" -A 1 | grep 200)
+then
+	echo "basic GET messages new message succeeded"
+else
+	echo "basic GET messages new message failed"
+fi
+
+http=http://localhost:6060/messages/821a8de6ff88501123b99cacf7eec178638c77362012f73945f21b624cd105f8
+expected='{"message":"new message"}'
+if (curl -s -i $http --write-out "%{http_code}" | grep "$expected" -A 1 | grep 200)
+then
+	echo "basic GET messages new message succeeded"
+else
+	echo "basic GET messages new message failed"
+fi
+

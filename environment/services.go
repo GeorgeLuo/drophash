@@ -26,6 +26,6 @@ func GetMessageFromHash(c echo.Context) error{
 		response := &GetMessageResponse{Message:message}
 		return c.JSON(http.StatusOK, response)
 	}
-
-	return echo.NewHTTPError(404, MSG_NOT_FOUND)
+	response := &GetMessageErrorResponse{Message:MSG_NOT_FOUND}
+	return echo.NewHTTPError(404, response)
 }

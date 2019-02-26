@@ -1,8 +1,8 @@
 package environment
 
 import (
-	"github.com/mongodb/mongo-go-driver/mongo"
-	"github.com/mongodb/mongo-go-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo"
 	"context"
 	"time"
 	"fmt"

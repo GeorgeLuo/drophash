@@ -28,8 +28,8 @@ Direct yourself to your $GOROOT path where your github src are located (~/go/src
 go get github.com/labstack/echo
 go get github.com/dgrijalva/jwt-go
 go get github.com/sirupsen/logrus
-go get github.com/mongodb/mongo-go-driver/mongo/options
-go get github.com/mongodb/mongo-go-driver/mongo
+go get go.mongodb.org/mongo-driver/mongo
+go get go.mongodb.org/mongo-driver/mongo/options
 go get github.com/labstack/echo/middleware
 go get gopkg.in/mgo.v2/bson
 ```

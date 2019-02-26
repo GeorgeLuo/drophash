@@ -12,6 +12,10 @@ type GetMessageResponse struct {
 	Message string `json:"message"`
 }
 
+type GetMessageErrorResponse struct {
+	Message string `json:"err_msg"`
+}
+
 // Database Json Model
 
 type DbMessageResponse struct {
