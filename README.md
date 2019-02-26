@@ -23,7 +23,17 @@ go get github.com/GeorgeLuo/drophash
 ```
 Have a mongo database server running and listening.
 
-Direct yourself to your $GOROOT path where your github src are located (~/go/src/github.com/), and cd into the drophash directory.
+Direct yourself to your $GOROOT path where your github src are located (~/go/src/github.com/), and cd into the drophash directory. Pull the go dependencies.
+```
+go get github.com/labstack/echo
+go get github.com/dgrijalva/jwt-go
+go get github.com/sirupsen/logrus
+go get github.com/mongodb/mongo-go-driver/mongo/options
+go get github.com/mongodb/mongo-go-driver/mongo
+go get github.com/labstack/echo/middleware
+go get gopkg.in/mgo.v2/bson
+```
+Run the program and start the server.
 ```
 go run main.go
 ```
