@@ -70,6 +70,15 @@ docker run --publish 6060:8080 --name test drophash
 
 You now have a docker container that is listening on localhost:6060 and functions like the localized server.
 
+# Testing
+Some basic integration test cases are located in the test directory. Have the container listening.
+```
+cd test
+chmod +x curl_tests 
+./curl_tests
+```
+You should see subsequent lines confirming tests succeeded. Note if you run the server locally, you should modify the ports to your configuration.
+# Clean environment
 clean your environment with the following when you wish to terminate the container
 ```
 docker stop test
